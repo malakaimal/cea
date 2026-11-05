@@ -1,0 +1,1 @@
+Put your own school background photographs in this folder. To use one, update the hero and page banner image URLs in ../style.css to the uploaded file path, such as assets/backgrounds/school-campus.jpg.
