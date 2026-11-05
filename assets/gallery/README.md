@@ -1,0 +1,1 @@
+Upload your school's real activity, classroom, building and event photos here. Then replace the temporary image URLs in gallery.html with paths such as assets/gallery/event-1.jpg.
