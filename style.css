@@ -64,3 +64,99 @@ img{max-width:100%}
 @media(max-width:900px){.site-header .nav-links{gap:8px}.site-header .nav-links a{font-size:10px}.welcome-grid{gap:38px}.quick-grid>a{padding:19px 14px}.quick-grid small{font-size:10px}}
 @media(max-width:820px){.site-header{height:76px}.site-header .nav-wrap{height:76px}.cea-hero{min-height:630px}.cea-hero-inner{padding:85px 0 120px}.quick-grid{grid-template-columns:1fr}.quick-grid>a{border-left:1px solid #e7ebef;border-bottom:1px solid #e7ebef}.welcome-grid{grid-template-columns:1fr;gap:38px}.welcome-image{height:360px}.values-grid{grid-template-columns:1fr 1fr}.life-gallery{grid-template-columns:1fr 1fr}.life-gallery a:last-child{display:none}}
 @media(max-width:600px){.cea-hero{min-height:660px;background-position:58% center}.cea-hero-shade{background:linear-gradient(90deg,rgba(7,25,46,.94),rgba(12,39,68,.67))}.cea-hero-inner{padding:78px 0 125px}.hero-copy h1{font-size:43px}.hero-copy p{font-size:15px}.hero-bottom-inner{flex-direction:column;gap:4px;font-size:8px}.hero-trust{font-size:8px;letter-spacing:.1em;margin-top:35px}.quick-grid>a{padding:16px 10px}.cea-welcome{padding:65px 0}.welcome-image{height:290px}.welcome-copy h2{font-size:33px}.values-grid,.life-gallery{grid-template-columns:1fr}.life-gallery a{height:220px}.life-gallery a:last-child{display:block}.admission-band-inner{align-items:flex-start;flex-direction:column}.section-heading{margin-bottom:28px}}
+
+
+/* Selected visual reference: clean school navigation + split hero + overlapping quick links */
+.cea-reference-home{font-family:'DM Sans',Arial,sans-serif;background:#fff;color:#263a4a}
+.cea-reference-home .ref-header{height:68px;background:#fff;position:relative;z-index:20;box-shadow:0 2px 12px rgba(20,45,65,.08)}
+.cea-reference-home .ref-nav{height:68px;display:flex;align-items:center;gap:22px}
+.cea-reference-home .ref-brand{display:flex;align-items:center;gap:9px;min-width:220px;margin-right:auto}
+.cea-reference-home .ref-brand img{width:38px;height:38px;object-fit:contain}
+.cea-reference-home .ref-brand span{display:flex;flex-direction:column;line-height:1.15}
+.cea-reference-home .ref-brand b{font-size:12px;font-weight:800;color:#24394a;letter-spacing:-.02em}
+.cea-reference-home .ref-brand small{font-size:8px;letter-spacing:.16em;color:#87949c;margin-top:4px}
+.cea-reference-home .ref-links{display:flex;align-items:center;gap:clamp(12px,2vw,27px)}
+.cea-reference-home .ref-links a{font-size:10px;font-weight:700;color:#46545c;white-space:nowrap}
+.cea-reference-home .ref-links a:first-child,.cea-reference-home .ref-links a:hover{color:#e65b56}
+.cea-reference-home .ref-actions{display:flex;align-items:center;gap:10px}
+.cea-reference-home .ref-actions .lang-btn{border:0;background:#f1f3f4;border-radius:2px;padding:9px 10px;font-size:10px}
+.cea-reference-home .ref-admit{background:#ffc52e;color:#25333a;padding:11px 17px;font-size:10px;font-weight:800;white-space:nowrap}
+.cea-reference-home .ref-hero{min-height:480px;position:relative;display:grid;grid-template-columns:46% 54%;background:#71858d}
+.cea-reference-home .ref-hero-photo{position:relative;min-width:0;background:#e8edf0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cea-reference-home .ref-hero-photo img{width:100%;height:100%;max-height:530px;object-fit:cover;object-position:center 35%;display:block}
+.cea-reference-home .ref-hero-panel{position:relative;background:#71858d;color:#fff;display:flex;align-items:center;padding:65px clamp(34px,7vw,110px) 105px}
+.cea-reference-home .ref-copy{max-width:480px}
+.cea-reference-home .ref-kicker{font-size:9px;letter-spacing:.18em;font-weight:800;color:#ffca39}
+.cea-reference-home .ref-copy h1{font:600 clamp(38px,5vw,62px)/1.1 'Playfair Display',Georgia,serif;color:#fff;margin:14px 0 16px;letter-spacing:-.035em}
+.cea-reference-home .ref-copy p{font-size:12px;line-height:1.9;color:#e5ecee;max-width:430px;margin:0 0 23px}
+.cea-reference-home .ref-hero-button{display:inline-flex;align-items:center;gap:25px;background:#f14e4a;color:#fff;padding:12px 17px;font-size:10px;font-weight:800;box-shadow:0 6px 18px #293e4a22}
+.cea-reference-home .ref-hero-button span{font-size:17px;line-height:10px}
+.cea-reference-home .ref-location{position:absolute;bottom:22px;right:35px;color:#dce4e6;font-size:8px;letter-spacing:.18em}
+.cea-reference-home .ref-shortcuts{position:absolute;z-index:4;left:50%;bottom:-25px;transform:translateX(-50%);width:min(850px,calc(100% - 70px));display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.cea-reference-home .ref-shortcut{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;color:#fff;font-size:11px;font-weight:800;box-shadow:0 8px 22px #142c3b25}
+.cea-reference-home .ref-shortcut b{font-size:19px}
+.cea-reference-home .ref-shortcut.red{background:#ee514c}
+.cea-reference-home .ref-shortcut.gold{background:#ffc52e;color:#253844}
+.cea-reference-home .ref-shortcut.white{background:#fff;color:#34434b}
+.cea-reference-home .ref-intro{padding:105px 0 80px}
+.cea-reference-home .ref-intro-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:65px}
+.cea-reference-home .ref-section-kicker{font-size:9px;letter-spacing:.2em;color:#dfaa21;font-weight:800}
+.cea-reference-home .ref-intro h2,.cea-reference-home .ref-feature-heading h2{font:600 clamp(28px,3.5vw,42px)/1.2 'Playfair Display',Georgia,serif;color:#314c5d;margin:13px 0 15px}
+.cea-reference-home .ref-intro p{font-size:13px;line-height:1.95;color:#71808a;max-width:520px}
+.cea-reference-home .ref-more{display:inline-block;margin-top:10px;color:#e45b55;font-size:11px;font-weight:800}
+.cea-reference-home .ref-intro-image{height:310px;overflow:hidden;background:#e9eef1}
+.cea-reference-home .ref-intro-image img{width:100%;height:100%;object-fit:cover}
+.cea-reference-home .ref-features{padding:70px 0 85px;background:#f5f7f7}
+.cea-reference-home .ref-feature-heading{text-align:center;margin:0 auto 35px}
+.cea-reference-home .ref-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cea-reference-home .ref-feature-grid a{position:relative;min-height:190px;padding:25px 24px;background:#fff;border-bottom:3px solid #ffc52e;box-shadow:0 8px 24px rgba(40,65,78,.06)}
+.cea-reference-home .ref-feature-grid a>span{font:600 25px 'Playfair Display',serif;color:#e7b532}
+.cea-reference-home .ref-feature-grid h3{font:600 18px 'Playfair Display',serif;color:#344e5e;margin:12px 0 7px}
+.cea-reference-home .ref-feature-grid p{font-size:11px;line-height:1.8;color:#7b8991;margin:0;max-width:260px}
+.cea-reference-home .ref-feature-grid a>b{position:absolute;right:22px;bottom:20px;color:#e65b56}
+.cea-reference-home .ref-bottom-cta{background:#6e838c;color:#fff;padding:42px 0}
+.cea-reference-home .ref-bottom-cta .container{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.cea-reference-home .ref-bottom-cta span{font-size:8px;letter-spacing:.2em;color:#ffd04d;font-weight:800}
+.cea-reference-home .ref-bottom-cta h2{font:600 clamp(23px,3vw,34px)/1.2 'Playfair Display',Georgia,serif;margin:9px 0 0}
+.cea-reference-home .ref-bottom-cta a{background:#ffc52e;color:#283943;padding:13px 19px;font-size:10px;font-weight:800;white-space:nowrap}
+.cea-reference-home .footer{margin-top:0}
+.cea-reference-home .urdu-mode .ref-nav,.cea-reference-home.urdu-mode .ref-intro-grid{direction:rtl}
+.cea-reference-home.urdu-mode .ref-copy,.cea-reference-home.urdu-mode .ref-intro,.cea-reference-home.urdu-mode .ref-feature-heading{text-align:right}
+.cea-reference-home.urdu-mode .ref-location{right:auto;left:35px}
+.cea-reference-home.urdu-mode .ref-intro-image{direction:ltr}
+@media(max-width:900px){
+ .cea-reference-home .ref-nav{gap:12px}
+ .cea-reference-home .ref-brand{min-width:185px}
+ .cea-reference-home .ref-links{gap:12px}
+ .cea-reference-home .ref-links a{font-size:9px}
+ .cea-reference-home .ref-hero{min-height:430px}
+ .cea-reference-home .ref-hero-panel{padding:45px 35px 90px}
+}
+@media(max-width:700px){
+ .cea-reference-home .ref-header,.cea-reference-home .ref-nav{height:66px}
+ .cea-reference-home .ref-nav{gap:9px}
+ .cea-reference-home .ref-brand{min-width:0;max-width:calc(100% - 105px)}
+ .cea-reference-home .ref-brand b{font-size:10px}
+ .cea-reference-home .ref-brand img{width:34px;height:34px}
+ .cea-reference-home .ref-nav .menu-toggle{display:block;border:0;background:#ffc52e;color:#263944;width:36px;height:36px;font-size:20px}
+ .cea-reference-home .ref-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;padding:14px 22px;box-shadow:0 12px 20px #20394a20;flex-direction:column;align-items:stretch;gap:0}
+ .cea-reference-home .ref-links.open{display:flex}
+ .cea-reference-home .ref-links a{font-size:12px;padding:12px 0;border-bottom:1px solid #edf0f1}
+ .cea-reference-home .ref-actions{gap:5px}
+ .cea-reference-home .ref-actions .lang-btn{padding:8px;font-size:9px}
+ .cea-reference-home .ref-admit{padding:10px 11px;font-size:9px}
+ .cea-reference-home .ref-hero{grid-template-columns:1fr;min-height:0}
+ .cea-reference-home .ref-hero-photo{height:300px}
+ .cea-reference-home .ref-hero-photo img{object-fit:contain;max-height:100%;width:100%}
+ .cea-reference-home .ref-hero-panel{min-height:320px;padding:45px 25px 95px}
+ .cea-reference-home .ref-copy h1{font-size:40px}
+ .cea-reference-home .ref-location{bottom:13px;right:20px}
+ .cea-reference-home .ref-shortcuts{width:calc(100% - 28px);bottom:-69px;grid-template-columns:1fr;gap:5px}
+ .cea-reference-home .ref-shortcut{height:43px;padding:0 15px}
+ .cea-reference-home .ref-intro{padding:115px 0 60px}
+ .cea-reference-home .ref-intro-grid{grid-template-columns:1fr;gap:28px}
+ .cea-reference-home .ref-intro-image{height:230px}
+ .cea-reference-home .ref-feature-grid{grid-template-columns:1fr}
+ .cea-reference-home .ref-feature-grid a{min-height:155px}
+ .cea-reference-home .ref-bottom-cta .container{align-items:flex-start;flex-direction:column}
+}
