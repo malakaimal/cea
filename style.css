@@ -224,3 +224,79 @@ body{background:#fff;color:#344b58}
  .nav-links a{border-color:#edf0f0}
  .nav-links .nav-login{color:#fff}
 }
+
+
+/* Complete inner-page visual system: match the CEA homepage */
+body:not(.cea-reference-home){background:#fff;color:#344b58}
+body:not(.cea-reference-home) .site-header{background:#fff;border-bottom:1px solid #edf0f0;box-shadow:0 4px 18px rgba(38,61,73,.07)}
+body:not(.cea-reference-home) .site-header .brand-copy strong{color:#344f5d}
+body:not(.cea-reference-home) .site-header .brand-copy small{color:#c39419}
+body:not(.cea-reference-home) .site-header .nav-links a{color:#465962;transition:color .2s}
+body:not(.cea-reference-home) .site-header .nav-links a:hover,
+body:not(.cea-reference-home) .site-header .nav-links a.active{color:#ee514c}
+body:not(.cea-reference-home) .site-header .lang-btn{border:0;border-radius:2px;background:#f2f4f4;color:#344b58}
+body:not(.cea-reference-home) .site-header .lang-btn:hover{background:#ffc52e}
+body:not(.cea-reference-home) .page-hero{position:relative;isolation:isolate;min-height:260px;display:flex;align-items:center;padding:76px 0;background:#71858d url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1900&q=85') center 48%/cover no-repeat}
+body:not(.cea-reference-home) .page-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(48,72,83,.94),rgba(83,108,117,.78))}
+body:not(.cea-reference-home) .page-hero.compact{min-height:220px;padding:60px 0}
+body:not(.cea-reference-home) .page-hero .container{position:relative}
+body:not(.cea-reference-home) .page-hero .eyebrow{color:#ffd04d}
+body:not(.cea-reference-home) .page-hero h1{font:600 clamp(36px,5vw,58px)/1.13 'Playfair Display',Georgia,serif;letter-spacing:-.025em;color:#fff;margin:12px 0}
+body:not(.cea-reference-home) .page-hero p{max-width:650px;color:#eef2f2;font-size:15px;line-height:1.8}
+body:not(.cea-reference-home) .section{padding:82px 0}
+body:not(.cea-reference-home) .section.soft{background:#f4f6f6}
+body:not(.cea-reference-home) .section h2{font:600 clamp(28px,3.4vw,42px)/1.2 'Playfair Display',Georgia,serif;color:#344f5d}
+body:not(.cea-reference-home) .section h3{color:#344f5d}
+body:not(.cea-reference-home) .section p,body:not(.cea-reference-home) .section li{color:#71808a;line-height:1.9}
+body:not(.cea-reference-home) .eyebrow.dark{color:#d2a522}
+body:not(.cea-reference-home) .photo-wrap{border-radius:3px;box-shadow:0 18px 40px rgba(43,65,75,.12)}
+body:not(.cea-reference-home) .feature{border:1px solid #e7ebeb;border-radius:3px;border-bottom:3px solid #ffc52e;box-shadow:0 9px 25px rgba(43,65,75,.06);transition:transform .2s,box-shadow .2s}
+body:not(.cea-reference-home) .feature:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(43,65,75,.11)}
+body:not(.cea-reference-home) .feature .number{color:#d4a923}
+body:not(.cea-reference-home) .feature h3{font:600 20px 'Playfair Display',Georgia,serif}
+body:not(.cea-reference-home) .btn{border-radius:2px;transition:transform .2s,background .2s}
+body:not(.cea-reference-home) .btn-blue{background:#ee514c;color:#fff;box-shadow:0 7px 17px rgba(238,81,76,.17)}
+body:not(.cea-reference-home) .btn-blue:hover{background:#d94440}
+body:not(.cea-reference-home) .btn-gold{background:#ffc52e;color:#34434b}
+body:not(.cea-reference-home) .form-card{border:1px solid #e6ebeb;border-radius:3px;border-top:3px solid #ffc52e;padding:34px;box-shadow:0 15px 38px rgba(43,65,75,.08)}
+body:not(.cea-reference-home) .form-card label{color:#344f5d}
+body:not(.cea-reference-home) .form-card input,
+body:not(.cea-reference-home) .form-card select,
+body:not(.cea-reference-home) .form-card textarea{border:1px solid #dce4e6;border-radius:2px;background:#fbfcfc;padding:14px}
+body:not(.cea-reference-home) .form-card input:focus,
+body:not(.cea-reference-home) .form-card select:focus,
+body:not(.cea-reference-home) .form-card textarea:focus{outline:2px solid #ffc52e;outline-offset:1px;border-color:#d5a91f}
+body:not(.cea-reference-home) .note{background:#fff8df;border-left:4px solid #ffc52e;border-radius:2px;padding:18px 20px}
+body:not(.cea-reference-home) .faq-list details{padding:22px 20px;border-bottom:1px solid #e5eaea}
+body:not(.cea-reference-home) .faq-list summary{color:#344f5d;font:600 17px 'Playfair Display',Georgia,serif}
+body:not(.cea-reference-home) .gallery-grid{gap:18px}
+body:not(.cea-reference-home) .gallery-grid img{height:270px;border-radius:3px;box-shadow:0 12px 28px rgba(43,65,75,.12);transition:transform .25s}
+body:not(.cea-reference-home) .gallery-grid img:hover{transform:translateY(-4px)}
+body:not(.cea-reference-home) .footer{background:#536d77;color:#eef2f2;padding:58px 0 18px}
+body:not(.cea-reference-home) .footer .brand-copy strong{color:#fff}
+body:not(.cea-reference-home) .footer .brand-copy small{color:#ffd04d}
+body:not(.cea-reference-home) .footer h3{color:#ffd04d;font:600 17px 'Playfair Display',Georgia,serif}
+body:not(.cea-reference-home) .footer p,body:not(.cea-reference-home) .footer a{color:#e0e8e9}
+body:not(.cea-reference-home) .footer a:hover{color:#ffd04d}
+body:not(.cea-reference-home) .copyright{border-color:#ffffff35;color:#d0dcde}
+body:not(.cea-reference-home) .stats{background:#71858d}
+body:not(.cea-reference-home) .stats strong{color:#ffd04d}
+body:not(.cea-reference-home) .banner{background:#71858d}
+body:not(.cea-reference-home) .banner .btn{background:#ffc52e;color:#34434b;border:0}
+body:not(.cea-reference-home).urdu-mode .page-hero,
+body:not(.cea-reference-home).urdu-mode .section,
+body:not(.cea-reference-home).urdu-mode .footer{text-align:right}
+body:not(.cea-reference-home).urdu-mode .page-hero:before{background:linear-gradient(270deg,rgba(48,72,83,.94),rgba(83,108,117,.78))}
+@media(max-width:820px){
+ body:not(.cea-reference-home) .site-header .nav-links{background:#fff}
+ body:not(.cea-reference-home) .site-header .nav-links a{padding:12px 4px;border-bottom:1px solid #edf0f0}
+ body:not(.cea-reference-home) .site-header .menu-toggle{background:#ffc52e;color:#344b58;border-radius:2px}
+ body:not(.cea-reference-home) .page-hero{min-height:220px;padding:58px 0}
+ body:not(.cea-reference-home) .section{padding:62px 0}
+}
+@media(max-width:600px){
+ body:not(.cea-reference-home) .page-hero.compact{min-height:190px;padding:48px 0}
+ body:not(.cea-reference-home) .page-hero h1{font-size:36px}
+ body:not(.cea-reference-home) .form-card{padding:23px}
+ body:not(.cea-reference-home) .gallery-grid img{height:230px}
+}
