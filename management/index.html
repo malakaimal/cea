@@ -2,66 +2,105 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12345a"><title>CEA | School Management</title>
+<meta name="theme-color" content="#102b4a"><title>CEA | School Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="layout">
+<div class="app-shell">
 <aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="logo">CEA</div><div><b>Chakesar Education</b><small>School Management</small></div></div>
-  <p class="side-label">WORKSPACE</p>
-  <nav>
-    <button class="nav active" data-page="dashboard">▦ <span>Dashboard</span></button>
-    <button class="nav" data-page="students">♙ <span>Student Database</span></button>
-    <button class="nav" data-page="admissions">＋ <span>Admissions</span></button>
-    <button class="nav" data-page="fees">▤ <span>Fee Management</span></button>
-    <button class="nav" data-page="teachers">♧ <span>Teachers</span></button>
-    <button class="nav" data-page="attendance">✓ <span>Attendance</span></button>
-    <button class="nav" data-page="results">▣ <span>Exam Results</span></button>
-    <button class="nav" data-page="notifications">♢ <span>Notifications</span></button>
+  <div class="brand"><div class="brand-mark">CEA</div><div><b>Chakesar Education</b><small>Management Suite</small></div></div>
+  <div class="school-chip"><span class="school-avatar">C</span><span><b>Chakesar Education Academy</b><small>Danakool · Shangla</small></span></div>
+  <div class="nav-caption">MAIN MENU</div>
+  <nav class="nav-list" aria-label="Main navigation">
+    <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span>Dashboard</button>
+    <button class="nav-item" data-page="admissions"><span class="nav-icon">＋</span>Admissions</button>
+    <button class="nav-item" data-page="students"><span class="nav-icon">♙</span>Student Database</button>
+    <button class="nav-item" data-page="parents"><span class="nav-icon">♧</span>Parents & Guardians</button>
+    <button class="nav-item" data-page="teachers"><span class="nav-icon">▤</span>Teachers & Staff</button>
+    <div class="nav-caption nav-caption-spaced">ACADEMICS</div>
+    <button class="nav-item" data-page="attendance"><span class="nav-icon">✓</span>Attendance</button>
+    <button class="nav-item" data-page="timetable"><span class="nav-icon">▦</span>Class Timetable</button>
+    <button class="nav-item" data-page="exams"><span class="nav-icon">✎</span>Examinations</button>
+    <button class="nav-item" data-page="results"><span class="nav-icon">▣</span>Results & Report Cards</button>
+    <div class="nav-caption nav-caption-spaced">FINANCE</div>
+    <button class="nav-item" data-page="fees"><span class="nav-icon">₨</span>Fee Management</button>
+    <button class="nav-item" data-page="expenses"><span class="nav-icon">↗</span>Expenses</button>
+    <button class="nav-item" data-page="reports"><span class="nav-icon">▥</span>Reports & Analytics</button>
+    <div class="nav-caption nav-caption-spaced">COMMUNICATION</div>
+    <button class="nav-item" data-page="notifications"><span class="nav-icon">♢</span>Notifications</button>
+    <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span>School Settings</button>
   </nav>
-  <div class="side-foot"><span class="live-dot"></span> Online system setup<br><small>Database connection pending</small></div>
+  <div class="sidebar-bottom"><div class="secure-dot"></div><span><b>Preview workspace</b><small>Connect secure backend for live data</small></span></div>
 </aside>
-<main class="main">
-<header class="top"><button id="menu" class="menu" aria-label="Menu">☰</button><div><small>CHAKESAR EDUCATION ACADEMY</small><h1 id="heading">Dashboard</h1></div><div class="user"><span id="today"></span><b>A</b></div></header>
-<section class="page show" id="dashboard">
-  <div class="hero"><div><small>CEA SCHOOL WORKSPACE</small><h2>School management, in one place.</h2><p>Admissions, student records, fees and academic progress.</p></div><button class="gold-btn" data-open="admissions">＋ New Admission</button></div>
-  <div class="stats">
-    <article><i>♙</i><small>Total Students</small><strong>--</strong><em>Live count after connection</em></article>
-    <article><i>▤</i><small>Fee Collection</small><strong>PKR --</strong><em>Recorded payments</em></article>
-    <article><i>♧</i><small>Teachers</small><strong>--</strong><em>Staff accounts</em></article>
-    <article><i>✓</i><small>Attendance</small><strong>--</strong><em>Today's attendance</em></article>
+<main class="main-area">
+<header class="topbar">
+  <div class="top-left"><button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button><div><div class="eyebrow">CHAKESAR EDUCATION ACADEMY</div><h1 id="pageTitle">Dashboard</h1></div></div>
+  <div class="top-actions"><div class="date-chip" id="todayDate"></div><button class="icon-btn" data-page="notifications" aria-label="Notifications">♢<i></i></button><div class="profile-chip"><span class="profile-avatar">A</span><span><b>School Admin</b><small>Administrator</small></span></div></div>
+</header>
+<div class="content-area">
+<section class="page active" id="dashboard">
+  <div class="welcome-banner"><div><div class="eyebrow light">SCHOOL ADMINISTRATION</div><h2>Welcome to your school workspace.</h2><p>Manage students, academics, fees and school operations from one place.</p></div><button class="btn btn-gold" data-page="admissions">＋ New Admission</button></div>
+  <div class="section-row"><div><h2>School Overview</h2><p>Live totals will appear when the secure database is connected.</p></div><span class="period-pill">Current session · 2026–27</span></div>
+  <div class="metric-grid">
+    <article class="metric-card"><div class="metric-top"><span>Total Students</span><span class="metric-icon blue">♙</span></div><strong>—</strong><small>Registered students</small></article>
+    <article class="metric-card"><div class="metric-top"><span>Teachers & Staff</span><span class="metric-icon violet">♧</span></div><strong>—</strong><small>Active staff accounts</small></article>
+    <article class="metric-card"><div class="metric-top"><span>Fees Collected</span><span class="metric-icon green">₨</span></div><strong>PKR —</strong><small>Payments recorded</small></article>
+    <article class="metric-card"><div class="metric-top"><span>Outstanding Dues</span><span class="metric-icon amber">◷</span></div><strong>PKR —</strong><small>Pending fee balance</small></article>
+    <article class="metric-card"><div class="metric-top"><span>Today's Attendance</span><span class="metric-icon teal">✓</span></div><strong>—</strong><small>Present students</small></article>
   </div>
-  <div class="columns"><article class="card"><div class="card-head"><div><h3>Recent Admissions</h3><p>Latest registered students</p></div><button class="link" data-open="students">View database →</button></div><div class="empty">Connect the secure backend to display student records.</div></article>
-  <article class="card"><h3>Quick Actions</h3><p>Common school tasks</p><button class="quick" data-open="admissions">＋ <span><b>Add a student</b><small>Register a new admission</small></span> ›</button><button class="quick" data-open="fees">▤ <span><b>Record a fee</b><small>Payment and receipt</small></span> ›</button><button class="quick" data-open="attendance">✓ <span><b>Mark attendance</b><small>Daily class register</small></span> ›</button></article></div>
-  <div class="notice"><b>Setup status:</b> The app interface is added. Secure login, database access and email sending must be connected before entering real student information.</div>
+  <div class="dashboard-grid">
+    <article class="panel"><div class="panel-heading"><div><h3>School Operations</h3><p>Quick access to daily tasks</p></div></div><div class="quick-grid">
+      <button class="quick-action" data-page="admissions"><span class="quick-icon blue">＋</span><b>New Admission</b><small>Register a student</small></button>
+      <button class="quick-action" data-page="fees"><span class="quick-icon green">₨</span><b>Receive Fee</b><small>Record a payment</small></button>
+      <button class="quick-action" data-page="attendance"><span class="quick-icon violet">✓</span><b>Mark Attendance</b><small>Daily class register</small></button>
+      <button class="quick-action" data-page="results"><span class="quick-icon amber">▣</span><b>Enter Results</b><small>Exam marks & grades</small></button>
+    </div></article>
+    <article class="panel"><div class="panel-heading"><div><h3>Recent Activity</h3><p>Latest changes in the system</p></div></div><div class="empty-state"><span class="empty-symbol">◷</span><b>No activity yet</b><small>Activity will appear here after backend integration.</small></div></article>
+  </div>
+  <div class="setup-note"><b>Preview mode:</b> This is the redesigned management interface. Real student records, authentication, fee transactions and parent notifications are not connected yet. Do not enter real student information until secure login and database storage are enabled.</div>
 </section>
-<section class="page" id="students"><div class="section-head"><div><h2>Student Database</h2><p>Central register for all admitted students.</p></div><button class="gold-btn" data-open="admissions">＋ Add Student</button></div><article class="card"><input id="search" class="search" placeholder="Search students (available after backend connection)"><div class="table-wrap"><table><thead><tr><th>Admission No.</th><th>Student</th><th>Father / Guardian</th><th>Class</th><th>Phone</th><th>Monthly Fee</th><th>Status</th></tr></thead><tbody><tr><td colspan="7" class="muted">No live records loaded. Connect backend first.</td></tr></tbody></table></div></article></section>
-<section class="page" id="admissions"><div class="section-head"><div><h2>New Admission</h2><p>Admission form interface. Saving will be enabled after secure backend setup.</p></div></div><article class="card form-card"><form id="admission">
-<div class="photo-section">
-  <div><h3>Student Photograph <span class="required-mark">*</span></h3><p>Take a photo directly using your device camera. A photo is required for admission.</p></div>
-  <div class="camera-layout">
-    <div class="photo-preview" id="photoPreview"><span id="photoPlaceholder">Student photo preview</span><img id="photoImage" alt="Student photo preview" hidden></div>
-    <div class="camera-controls">
-      <button class="gold-btn" type="button" id="startCamera">Open Camera</button>
-      <button class="camera-btn" type="button" id="capturePhoto" disabled>Capture Photo</button>
-      <button class="camera-btn" type="button" id="retakePhoto" hidden>Retake Photo</button>
-      <label class="upload-label">Or choose from device <input id="photoUpload" type="file" accept="image/*" capture="environment"></label>
-      <small id="cameraStatus" aria-live="polite">Camera permission will be requested when you open the camera.</small>
-    </div>
-  </div>
-  <video id="cameraVideo" autoplay playsinline muted hidden></video>
-  <canvas id="photoCanvas" hidden></canvas>
-  <input type="hidden" id="studentPhotoRequired" value="">
-</div><div class="form-grid">
-<label>Admission Number *<input required placeholder="CEA-2026-001"></label><label>Student Full Name *<input required placeholder="Student name"></label>
-<label>Father / Guardian Name<input placeholder="Father name"></label><label>Class *<select required><option value="">Select class</option><option>Nursery</option><option>KG</option><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option><option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option></select></label>
-<label>Section<input placeholder="A / B"></label><label>Guardian Phone<input placeholder="03xxxxxxxxx"></label><label>Guardian Email<input type="email" placeholder="parent@example.com"></label><label>Monthly Fee (PKR)<input type="number" min="0" value="0"></label></div><button class="gold-btn" type="submit">Save Admission</button><p class="hint">Form preview only. Secure saving will be enabled after backend and admin login are connected.</p></form></article></section>
-<section class="page" id="fees"><div class="section-head"><div><h2>Fee Management</h2><p>Fee ledger, payments and receipts.</p></div></div><article class="card placeholder"><span>▤</span><h3>Fee management module</h3><p>Next: fee structure, monthly charges, payment ledger, balances and printable receipts.</p></article></section>
-<section class="page" id="teachers"><div class="section-head"><div><h2>Teacher Management</h2><p>Staff accounts and assigned classes.</p></div></div><article class="card placeholder"><span>♧</span><h3>Teacher portal</h3><p>Next: admin-created teacher accounts, secure sign-in and class permissions.</p></article></section>
-<section class="page" id="attendance"><div class="section-head"><div><h2>Attendance</h2><p>Daily attendance and monthly reports.</p></div></div><article class="card placeholder"><span>✓</span><h3>Attendance module</h3><p>Next: class-wise attendance entry and attendance summaries.</p></article></section>
-<section class="page" id="results"><div class="section-head"><div><h2>Examination Results</h2><p>Exams, marks and report cards.</p></div></div><article class="card placeholder"><span>▣</span><h3>Results module</h3><p>Next: exam creation, subject marks, grades and protected result lookup.</p></article></section>
-<section class="page" id="notifications"><div class="section-head"><div><h2>Notifications</h2><p>Parent/student alerts and school announcements.</p></div></div><article class="card placeholder"><span>♢</span><h3>Resend email integration</h3><p>Fee-payment emails will be sent from the private backend after the sending domain is verified.</p></article></section>
-<footer>Chakesar Education Academy High School Danakool · School Management</footer>
-</main></div><div id="toast" class="toast" role="status"></div><script src="app.js"></script>
+
+<section class="page" id="admissions"><div class="page-heading"><div><h2>Admissions</h2><p>Register new students and manage admission applications.</p></div><button class="btn btn-primary" data-modal="admissionModal">＋ Add New Student</button></div>
+  <div class="summary-strip"><div><small>New this session</small><b>—</b></div><div><small>Pending applications</small><b>—</b></div><div><small>Admission status</small><b>Database pending</b></div></div>
+  <article class="panel"><div class="panel-heading"><div><h3>Admission Register</h3><p>Newly admitted students will be added to the central student database.</p></div><input class="table-search" placeholder="Search admissions…" data-search="admissionTable"></div><div class="table-scroll"><table id="admissionTable"><thead><tr><th>Application ID</th><th>Student Name</th><th>Father / Guardian</th><th>Class</th><th>Submitted</th><th>Status</th></tr></thead><tbody><tr><td colspan="6" class="empty-cell">No admission records loaded.</td></tr></tbody></table></div></article>
+</section>
+
+<section class="page" id="students"><div class="page-heading"><div><h2>Student Database</h2><p>One central profile for every enrolled student.</p></div><button class="btn btn-primary" data-modal="admissionModal">＋ Add Student</button></div>
+  <div class="summary-strip"><div><small>Total enrolled</small><b>—</b></div><div><small>Active</small><b>—</b></div><div><small>Classes</small><b>Nursery–10</b></div><div><small>Session</small><b>2026–27</b></div></div>
+  <article class="panel"><div class="panel-heading"><div><h3>All Students</h3><p>Search by admission number, name or class.</p></div><input class="table-search" placeholder="Search students…" data-search="studentTable"></div><div class="table-scroll"><table id="studentTable"><thead><tr><th>Admission No.</th><th>Student</th><th>Father / Guardian</th><th>Class</th><th>Section</th><th>Guardian Contact</th><th>Status</th></tr></thead><tbody><tr><td colspan="7" class="empty-cell">Student database is ready for secure backend connection.</td></tr></tbody></table></div></article>
+</section>
+
+<section class="page" id="parents"><div class="page-heading"><div><h2>Parents & Guardians</h2><p>Manage guardian contacts and parent portal access.</p></div><button class="btn btn-primary" data-modal="parentModal">＋ Add Guardian</button></div><article class="panel"><div class="panel-heading"><div><h3>Guardian Directory</h3><p>Each guardian account will be linked to their child or children.</p></div><input class="table-search" placeholder="Search guardians…" data-search="parentTable"></div><div class="table-scroll"><table id="parentTable"><thead><tr><th>Guardian</th><th>Relationship</th><th>Student</th><th>Phone</th><th>Email</th><th>Portal Access</th></tr></thead><tbody><tr><td colspan="6" class="empty-cell">No guardian records loaded.</td></tr></tbody></table></div></article></section>
+
+<section class="page" id="teachers"><div class="page-heading"><div><h2>Teachers & Staff</h2><p>Staff directory, teaching assignments and accounts.</p></div><button class="btn btn-primary" data-modal="teacherModal">＋ Add Teacher</button></div><div class="summary-strip"><div><small>Teaching staff</small><b>—</b></div><div><small>Non-teaching staff</small><b>—</b></div><div><small>Assigned classes</small><b>—</b></div></div><article class="panel"><div class="panel-heading"><div><h3>Staff Directory</h3><p>Teacher accounts will only access their assigned classes.</p></div><input class="table-search" placeholder="Search staff…" data-search="teacherTable"></div><div class="table-scroll"><table id="teacherTable"><thead><tr><th>Staff ID</th><th>Name</th><th>Role</th><th>Subject</th><th>Assigned Classes</th><th>Status</th></tr></thead><tbody><tr><td colspan="6" class="empty-cell">No staff records loaded.</td></tr></tbody></table></div></article></section>
+
+<section class="page" id="attendance"><div class="page-heading"><div><h2>Attendance Management</h2><p>Daily student attendance and class-wise summaries.</p></div><button class="btn btn-primary" data-modal="attendanceModal">＋ Take Attendance</button></div><div class="summary-strip"><div><small>Present today</small><b>—</b></div><div><small>Absent today</small><b>—</b></div><div><small>Late</small><b>—</b></div><div><small>Attendance rate</small><b>—</b></div></div><article class="panel"><div class="panel-heading"><div><h3>Attendance Register</h3><p>Filter by date, class and section once connected.</p></div><input type="date" class="table-search"></div><div class="table-scroll"><table><thead><tr><th>Date</th><th>Class</th><th>Section</th><th>Total Students</th><th>Present</th><th>Absent</th><th>Marked By</th></tr></thead><tbody><tr><td colspan="7" class="empty-cell">Attendance records will appear here.</td></tr></tbody></table></div></article></section>
+
+<section class="page" id="timetable"><div class="page-heading"><div><h2>Class Timetable</h2><p>Manage periods, subjects, rooms and teacher assignments.</p></div><button class="btn btn-primary" data-modal="genericModal" data-modal-title="Add timetable period">＋ Add Period</button></div><article class="panel"><div class="panel-heading"><div><h3>Weekly Schedule</h3><p>Class timetable workspace.</p></div><span class="status-pill">Setup pending</span></div><div class="empty-state"><span class="empty-symbol">▦</span><b>No timetable configured</b><small>Add classes, subjects and teacher assignments to build the weekly schedule.</small></div></article></section>
+
+<section class="page" id="exams"><div class="page-heading"><div><h2>Examinations</h2><p>Create exams, define subjects and manage assessment schedules.</p></div><button class="btn btn-primary" data-modal="genericModal" data-modal-title="Create examination">＋ Create Exam</button></div><article class="panel"><div class="panel-heading"><div><h3>Exam Calendar</h3><p>School tests, mid-term and annual examinations.</p></div></div><div class="empty-state"><span class="empty-symbol">✎</span><b>No examinations created</b><small>Exam setup and mark entry will be enabled with the academic database.</small></div></article></section>
+
+<section class="page" id="results"><div class="page-heading"><div><h2>Results & Report Cards</h2><p>Enter marks, calculate grades and publish protected results.</p></div><button class="btn btn-primary" data-modal="genericModal" data-modal-title="Create result entry">＋ Enter Marks</button></div><div class="summary-strip"><div><small>Exams completed</small><b>—</b></div><div><small>Results published</small><b>—</b></div><div><small>Report cards</small><b>—</b></div></div><article class="panel"><div class="panel-heading"><div><h3>Result Register</h3><p>Only authorized users can enter or view student results.</p></div></div><div class="empty-state"><span class="empty-symbol">▣</span><b>No results available</b><small>Create an exam and enter marks to prepare report cards.</small></div></article></section>
+
+<section class="page" id="fees"><div class="page-heading"><div><h2>Fee Management</h2><p>Fee structures, monthly dues, payments and receipts.</p></div><button class="btn btn-primary" data-modal="paymentModal">＋ Record Payment</button></div><div class="metric-grid compact"><article class="metric-card"><div class="metric-top"><span>Expected Fees</span><span class="metric-icon blue">₨</span></div><strong>PKR —</strong><small>For selected month</small></article><article class="metric-card"><div class="metric-top"><span>Collected</span><span class="metric-icon green">✓</span></div><strong>PKR —</strong><small>Verified payments</small></article><article class="metric-card"><div class="metric-top"><span>Outstanding</span><span class="metric-icon amber">◷</span></div><strong>PKR —</strong><small>Unpaid balances</small></article><article class="metric-card"><div class="metric-top"><span>Fee Defaulters</span><span class="metric-icon violet">!</span></div><strong>—</strong><small>Accounts with dues</small></article></div>
+<div class="module-grid"><article class="module-card"><span class="module-icon green">₨</span><h3>Receive Fee</h3><p>Record a student payment and issue a receipt.</p><button class="text-action" data-modal="paymentModal">Open payment form →</button></article><article class="module-card"><span class="module-icon blue">▤</span><h3>Fee Structure</h3><p>Set class-wise monthly tuition and other charges.</p><button class="text-action" data-modal="genericModal" data-modal-title="Fee structure">Manage fee structure →</button></article><article class="module-card"><span class="module-icon amber">◷</span><h3>Monthly Dues</h3><p>Generate monthly student fee charges.</p><button class="text-action" data-modal="genericModal" data-modal-title="Monthly fee charges">View monthly dues →</button></article><article class="module-card"><span class="module-icon violet">▣</span><h3>Receipts & Ledger</h3><p>Payment history, printable receipts and balances.</p><button class="text-action" data-modal="genericModal" data-modal-title="Fee ledger and receipts">Open fee ledger →</button></article></div>
+<article class="panel"><div class="panel-heading"><div><h3>Recent Fee Payments</h3><p>Verified payments will appear here.</p></div><input class="table-search" placeholder="Search payments…" data-search="paymentTable"></div><div class="table-scroll"><table id="paymentTable"><thead><tr><th>Receipt No.</th><th>Student</th><th>Month</th><th>Amount</th><th>Payment Date</th><th>Method</th><th>Status</th></tr></thead><tbody><tr><td colspan="7" class="empty-cell">No payment records loaded.</td></tr></tbody></table></div></article></section>
+
+<section class="page" id="expenses"><div class="page-heading"><div><h2>School Expenses</h2><p>Track operational costs and expense categories.</p></div><button class="btn btn-primary" data-modal="genericModal" data-modal-title="Add school expense">＋ Add Expense</button></div><div class="summary-strip"><div><small>Monthly expenses</small><b>PKR —</b></div><div><small>Expense categories</small><b>—</b></div><div><small>Pending approvals</small><b>—</b></div></div><article class="panel"><div class="empty-state"><span class="empty-symbol">↗</span><b>No expense entries</b><small>Expense tracking will be connected to the finance ledger.</small></div></article></section>
+
+<section class="page" id="reports"><div class="page-heading"><div><h2>Reports & Analytics</h2><p>School-wide operational and academic reporting.</p></div><button class="btn btn-outline" onclick="window.print()">Print this page</button></div><div class="module-grid"><article class="module-card"><span class="module-icon blue">♙</span><h3>Student Reports</h3><p>Admissions, enrolment, class strength and student status.</p><button class="text-action" data-page="students">Open students →</button></article><article class="module-card"><span class="module-icon green">₨</span><h3>Financial Reports</h3><p>Fee collection, outstanding dues and expense summaries.</p><button class="text-action" data-page="fees">Open fees →</button></article><article class="module-card"><span class="module-icon violet">✓</span><h3>Attendance Reports</h3><p>Daily, monthly and class-wise attendance.</p><button class="text-action" data-page="attendance">Open attendance →</button></article><article class="module-card"><span class="module-icon amber">▣</span><h3>Academic Reports</h3><p>Exam performance, grades and report cards.</p><button class="text-action" data-page="results">Open results →</button></article></div></section>
+
+<section class="page" id="notifications"><div class="page-heading"><div><h2>Notifications & Announcements</h2><p>Communicate with parents, students and staff.</p></div><button class="btn btn-primary" data-modal="genericModal" data-modal-title="New announcement">＋ New Announcement</button></div><div class="module-grid"><article class="module-card"><span class="module-icon green">✓</span><h3>Fee Payment Alerts</h3><p>Notify a parent after a payment is successfully recorded.</p><span class="status-pill">Email integration pending</span></article><article class="module-card"><span class="module-icon blue">♢</span><h3>School Announcements</h3><p>Share notices, holidays and important updates.</p><span class="status-pill">Setup pending</span></article><article class="module-card"><span class="module-icon violet">♧</span><h3>Parent Messages</h3><p>Send class and student-specific updates.</p><span class="status-pill">Setup pending</span></article></div><article class="panel"><div class="empty-state"><span class="empty-symbol">♢</span><b>No notifications sent</b><small>Messages will be logged after secure notification integration.</small></div></article></section>
+
+<section class="page" id="settings"><div class="page-heading"><div><h2>School Settings</h2><p>Configure school identity, academic structure and access rules.</p></div></div><div class="settings-grid"><article class="panel settings-card"><span class="module-icon blue">▤</span><h3>School Profile</h3><p>School name, address, contact details and logo.</p><button class="text-action" data-modal="genericModal" data-modal-title="School profile">Configure profile →</button></article><article class="panel settings-card"><span class="module-icon violet">♙</span><h3>Classes & Sections</h3><p>Manage class names, sections and academic sessions.</p><button class="text-action" data-modal="genericModal" data-modal-title="Classes and sections">Manage classes →</button></article><article class="panel settings-card"><span class="module-icon green">⚙</span><h3>User Roles & Permissions</h3><p>Admin, teacher, parent and student access.</p><button class="text-action" data-modal="genericModal" data-modal-title="User roles and permissions">Manage access →</button></article><article class="panel settings-card"><span class="module-icon amber">▣</span><h3>Subjects & Grading</h3><p>Subject list, marks, grades and passing criteria.</p><button class="text-action" data-modal="genericModal" data-modal-title="Subjects and grading">Configure academics →</button></article></div></section>
+<footer class="app-footer">© 2026 Chakesar Education Academy · School Management Suite <span>Built for school administration</span></footer>
+</div>
+</main>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div class="eyebrow">CEA MANAGEMENT</div><h2 id="modalTitle">New Record</h2></div><button class="close-modal" id="closeModal" aria-label="Close">×</button></div><div id="modalContent"></div><p class="modal-footnote">Preview only. Secure saving will be enabled after backend authentication, validation and database integration.</p></section></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
 </body></html>
