@@ -1,0 +1,13 @@
+require("dotenv").config();
+const express=require("express");
+const helmet=require("helmet");
+const cors=require("cors");
+const {Pool}=require("pg");
+const app=express();
+app.use(helmet());
+app.use(express.json({limit:"100kb"}));
+const origins=(process.env.FRONTEND_ORIGIN||"").split(",").map(x=>x.trim()).filter(Boolean);
+app.use(cors({origin:(origin,cb)=>{if(!origin||origins.includes(origin))return cb(null,true);return cb(new Error("Origin not allowed"));}}));
+const pool=new Pool({connectionString:process.env.DATABASE_URL,ssl:{rejectUnauthorized:false}});
+app.get("/api/health",async(_req,res)=>{try{await pool.query("SELECT 1");res.json({ok:true,service:"CEA API",database:"connected"});}catch(e){res.status(503).json({ok:false,database:"unavailable"});}});
+app.listen(process.env.PORT||3000,()=>console.log("CEA API started"));
