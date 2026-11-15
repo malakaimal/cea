@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12345a"><title>CEA | School Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">CEA</div><div><b>Chakesar Education</b><small>School Management</small></div></div>
+  <p class="side-label">WORKSPACE</p>
+  <nav>
+    <button class="nav active" data-page="dashboard">▦ <span>Dashboard</span></button>
+    <button class="nav" data-page="students">♙ <span>Student Database</span></button>
+    <button class="nav" data-page="admissions">＋ <span>Admissions</span></button>
+    <button class="nav" data-page="fees">▤ <span>Fee Management</span></button>
+    <button class="nav" data-page="teachers">♧ <span>Teachers</span></button>
+    <button class="nav" data-page="attendance">✓ <span>Attendance</span></button>
+    <button class="nav" data-page="results">▣ <span>Exam Results</span></button>
+    <button class="nav" data-page="notifications">♢ <span>Notifications</span></button>
+  </nav>
+  <div class="side-foot"><span class="live-dot"></span> Online system setup<br><small>Database connection pending</small></div>
+</aside>
+<main class="main">
+<header class="top"><button id="menu" class="menu" aria-label="Menu">☰</button><div><small>CHAKESAR EDUCATION ACADEMY</small><h1 id="heading">Dashboard</h1></div><div class="user"><span id="today"></span><b>A</b></div></header>
+<section class="page show" id="dashboard">
+  <div class="hero"><div><small>CEA SCHOOL WORKSPACE</small><h2>School management, in one place.</h2><p>Admissions, student records, fees and academic progress.</p></div><button class="gold-btn" data-open="admissions">＋ New Admission</button></div>
+  <div class="stats">
+    <article><i>♙</i><small>Total Students</small><strong>--</strong><em>Live count after connection</em></article>
+    <article><i>▤</i><small>Fee Collection</small><strong>PKR --</strong><em>Recorded payments</em></article>
+    <article><i>♧</i><small>Teachers</small><strong>--</strong><em>Staff accounts</em></article>
+    <article><i>✓</i><small>Attendance</small><strong>--</strong><em>Today's attendance</em></article>
+  </div>
+  <div class="columns"><article class="card"><div class="card-head"><div><h3>Recent Admissions</h3><p>Latest registered students</p></div><button class="link" data-open="students">View database →</button></div><div class="empty">Connect the secure backend to display student records.</div></article>
+  <article class="card"><h3>Quick Actions</h3><p>Common school tasks</p><button class="quick" data-open="admissions">＋ <span><b>Add a student</b><small>Register a new admission</small></span> ›</button><button class="quick" data-open="fees">▤ <span><b>Record a fee</b><small>Payment and receipt</small></span> ›</button><button class="quick" data-open="attendance">✓ <span><b>Mark attendance</b><small>Daily class register</small></span> ›</button></article></div>
+  <div class="notice"><b>Setup status:</b> The app interface is added. Secure login, database access and email sending must be connected before entering real student information.</div>
+</section>
+<section class="page" id="students"><div class="section-head"><div><h2>Student Database</h2><p>Central register for all admitted students.</p></div><button class="gold-btn" data-open="admissions">＋ Add Student</button></div><article class="card"><input id="search" class="search" placeholder="Search students (available after backend connection)"><div class="table-wrap"><table><thead><tr><th>Admission No.</th><th>Student</th><th>Father / Guardian</th><th>Class</th><th>Phone</th><th>Monthly Fee</th><th>Status</th></tr></thead><tbody><tr><td colspan="7" class="muted">No live records loaded. Connect backend first.</td></tr></tbody></table></div></article></section>
+<section class="page" id="admissions"><div class="section-head"><div><h2>New Admission</h2><p>Admission form interface. Saving will be enabled after secure backend setup.</p></div></div><article class="card form-card"><form id="admission"><div class="form-grid">
+<label>Admission Number *<input required placeholder="CEA-2026-001"></label><label>Student Full Name *<input required placeholder="Student name"></label>
+<label>Father / Guardian Name<input placeholder="Father name"></label><label>Class *<select required><option value="">Select class</option><option>Nursery</option><option>KG</option><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option><option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option></select></label>
+<label>Section<input placeholder="A / B"></label><label>Guardian Phone<input placeholder="03xxxxxxxxx"></label><label>Guardian Email<input type="email" placeholder="parent@example.com"></label><label>Monthly Fee (PKR)<input type="number" min="0" value="0"></label></div><button class="gold-btn" type="submit">Save Admission</button><p class="hint">Form preview only. Secure saving will be enabled after backend and admin login are connected.</p></form></article></section>
+<section class="page" id="fees"><div class="section-head"><div><h2>Fee Management</h2><p>Fee ledger, payments and receipts.</p></div></div><article class="card placeholder"><span>▤</span><h3>Fee management module</h3><p>Next: fee structure, monthly charges, payment ledger, balances and printable receipts.</p></article></section>
+<section class="page" id="teachers"><div class="section-head"><div><h2>Teacher Management</h2><p>Staff accounts and assigned classes.</p></div></div><article class="card placeholder"><span>♧</span><h3>Teacher portal</h3><p>Next: admin-created teacher accounts, secure sign-in and class permissions.</p></article></section>
+<section class="page" id="attendance"><div class="section-head"><div><h2>Attendance</h2><p>Daily attendance and monthly reports.</p></div></div><article class="card placeholder"><span>✓</span><h3>Attendance module</h3><p>Next: class-wise attendance entry and attendance summaries.</p></article></section>
+<section class="page" id="results"><div class="section-head"><div><h2>Examination Results</h2><p>Exams, marks and report cards.</p></div></div><article class="card placeholder"><span>▣</span><h3>Results module</h3><p>Next: exam creation, subject marks, grades and protected result lookup.</p></article></section>
+<section class="page" id="notifications"><div class="section-head"><div><h2>Notifications</h2><p>Parent/student alerts and school announcements.</p></div></div><article class="card placeholder"><span>♢</span><h3>Resend email integration</h3><p>Fee-payment emails will be sent from the private backend after the sending domain is verified.</p></article></section>
+<footer>Chakesar Education Academy High School Danakool · School Management</footer>
+</main></div><div id="toast" class="toast" role="status"></div><script src="app.js"></script>
+</body></html>
