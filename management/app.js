@@ -1,76 +1,44 @@
-const pages=["dashboard","students","admissions","fees","teachers","attendance","results","notifications"];
-const byId=id=>document.getElementById(id);
-function openPage(name){pages.forEach(p=>byId(p).classList.toggle("show",p===name));document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.page===name));byId("heading").textContent=name==="dashboard"?"Dashboard":name.charAt(0).toUpperCase()+name.slice(1);byId("sidebar").classList.remove("open")}
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>openPage(b.dataset.page)));
-document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openPage(b.dataset.open)));
-byId("menu").addEventListener("click",()=>byId("sidebar").classList.toggle("open"));
-byId("today").textContent=new Intl.DateTimeFormat("en-PK",{dateStyle:"medium"}).format(new Date());
-let cameraStream=null;
-let capturedPhoto=null;
-const video=byId("cameraVideo"), canvas=byId("photoCanvas");
-function stopCamera(){
-  if(cameraStream){cameraStream.getTracks().forEach(track=>track.stop());cameraStream=null;}
-  video.srcObject=null;
-  video.hidden=true;
-  byId("capturePhoto").disabled=true;
+const pageNames={dashboard:"Dashboard",admissions:"Admissions",students:"Student Database",parents:"Parents & Guardians",teachers:"Teachers & Staff",attendance:"Attendance Management",timetable:"Class Timetable",exams:"Examinations",results:"Results & Report Cards",fees:"Fee Management",expenses:"School Expenses",reports:"Reports & Analytics",notifications:"Notifications",settings:"School Settings"};
+const $=id=>document.getElementById(id);
+let stream=null, photoData=null;
+function toast(message){const el=$("toast");el.textContent=message;el.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove("show"),3000)}
+function openPage(name){if(!pageNames[name])return;document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===name));document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.page===name));$("pageTitle").textContent=pageNames[name];$("sidebar").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"})}
+document.addEventListener("click",e=>{const p=e.target.closest("[data-page]");if(p){e.preventDefault();openPage(p.dataset.page)}const m=e.target.closest("[data-modal]");if(m){e.preventDefault();openModal(m.dataset.modal,m.dataset.modalTitle)}});
+$("menuToggle").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+$("todayDate").textContent=new Intl.DateTimeFormat("en-PK",{weekday:"short",day:"numeric",month:"short",year:"numeric"}).format(new Date());
+document.querySelectorAll("[data-search]").forEach(input=>input.addEventListener("input",()=>{const table=$(input.dataset.search);if(!table)return;const q=input.value.toLowerCase();table.querySelectorAll("tbody tr").forEach(row=>row.hidden=!row.textContent.toLowerCase().includes(q))}));
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+function closeModal(){stopCamera();$("modalBackdrop").hidden=true;$("modalContent").innerHTML="";photoData=null}
+$("closeModal").addEventListener("click",closeModal);$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+function openModal(type,title){stopCamera();photoData=null;let content="",heading=title||"New Record";
+if(type==="admissionModal"){heading="New Student Admission";content=`<form id="recordForm"><div class="form-grid">
+<div class="form-field"><label>Admission Number *</label><input required name="admissionNo" placeholder="CEA-2026-001"></div>
+<div class="form-field"><label>Admission Date *</label><input required type="date" name="admissionDate"></div>
+<div class="form-field"><label>Student Full Name *</label><input required name="studentName" placeholder="Full name"></div>
+<div class="form-field"><label>Father / Guardian Name *</label><input required name="fatherName" placeholder="Guardian name"></div>
+<div class="form-field"><label>Date of Birth</label><input type="date" name="dob"></div>
+<div class="form-field"><label>Gender</label><select name="gender"><option value="">Select</option><option>Male</option><option>Female</option></select></div>
+<div class="form-field"><label>Class *</label><select required name="className"><option value="">Select class</option><option>Nursery</option><option>KG</option><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option><option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option></select></div>
+<div class="form-field"><label>Section</label><input name="section" placeholder="A / B"></div>
+<div class="form-field"><label>Guardian Phone *</label><input required name="phone" placeholder="03xxxxxxxxx"></div>
+<div class="form-field"><label>Guardian Email</label><input type="email" name="email" placeholder="parent@example.com"></div>
+<div class="form-field"><label>Monthly Fee (PKR)</label><input type="number" min="0" name="monthlyFee" value="0"></div>
+<div class="form-field"><label>Address</label><input name="address" placeholder="Village / area"></div>
+<div class="form-field full"><label>Student Photograph * (camera or upload)</label><div class="photo-box"><img class="photo-thumb" id="photoThumb" alt="Photo preview" src="" hidden><div class="photo-thumb" id="photoPlaceholder">Photo required</div><div class="photo-actions"><button class="btn btn-outline" type="button" id="openCam">Open Camera</button><button class="btn btn-outline" type="button" id="takePhoto" disabled>Capture Photo</button><label class="text-action">Choose image <input id="photoFile" type="file" accept="image/*" capture="environment"></label><small id="photoStatus">A student photo is required for admission.</small></div></div><video id="camVideo" class="camera-video" autoplay playsinline muted hidden></video></div>
+<div class="form-field full"><label>Additional Notes</label><textarea name="notes" rows="2" placeholder="Optional notes"></textarea></div></div>
+<button class="btn btn-primary modal-submit" type="submit">Save Admission (Preview)</button></form>`;}
+else if(type==="paymentModal"){heading="Record Fee Payment";content=`<form id="recordForm"><div class="form-grid"><div class="form-field full"><label>Student Admission Number *</label><input required placeholder="Enter admission number"></div><div class="form-field"><label>Payment Month *</label><select required><option value="">Select month</option>${["January","February","March","April","May","June","July","August","September","October","November","December"].map(x=>`<option>${x}</option>`).join("")}</select></div><div class="form-field"><label>Amount (PKR) *</label><input required type="number" min="1" placeholder="0"></div><div class="form-field"><label>Payment Date *</label><input required type="date"></div><div class="form-field"><label>Payment Method</label><select><option>Cash</option><option>Bank Transfer</option><option>Other</option></select></div><div class="form-field full"><label>Remarks</label><input placeholder="Optional"></div></div><button class="btn btn-primary modal-submit">Record Payment (Preview)</button></form>`;}
+else if(type==="teacherModal"){heading="Add Teacher / Staff";content=`<form id="recordForm"><div class="form-grid"><div class="form-field"><label>Staff ID *</label><input required placeholder="CEA-T-001"></div><div class="form-field"><label>Full Name *</label><input required placeholder="Teacher name"></div><div class="form-field"><label>Role *</label><select required><option>Teacher</option><option>Principal</option><option>Accountant</option><option>Office Staff</option></select></div><div class="form-field"><label>Subject</label><input placeholder="Mathematics"></div><div class="form-field"><label>Phone</label><input placeholder="03xxxxxxxxx"></div><div class="form-field"><label>Email</label><input type="email" placeholder="staff@example.com"></div></div><button class="btn btn-primary modal-submit">Save Staff (Preview)</button></form>`;}
+else if(type==="parentModal"){heading="Add Parent / Guardian";content=`<form id="recordForm"><div class="form-grid"><div class="form-field"><label>Guardian Name *</label><input required placeholder="Full name"></div><div class="form-field"><label>Relationship</label><select><option>Father</option><option>Mother</option><option>Guardian</option></select></div><div class="form-field"><label>Student Admission No. *</label><input required placeholder="CEA-2026-001"></div><div class="form-field"><label>Phone *</label><input required placeholder="03xxxxxxxxx"></div><div class="form-field full"><label>Email</label><input type="email" placeholder="parent@example.com"></div></div><button class="btn btn-primary modal-submit">Save Guardian (Preview)</button></form>`;}
+else if(type==="attendanceModal"){heading="Take Class Attendance";content=`<form id="recordForm"><div class="form-grid"><div class="form-field"><label>Date *</label><input type="date" required></div><div class="form-field"><label>Class *</label><select required><option value="">Select class</option>${["Nursery","KG","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th"].map(x=>`<option>${x}</option>`).join("")}</select></div><div class="form-field"><label>Section</label><input placeholder="A"></div><div class="form-field"><label>Teacher</label><input placeholder="Teacher name"></div></div><p class="modal-footnote">Student-wise present/absent marking will load from the student database after integration.</p><button class="btn btn-primary modal-submit">Continue (Preview)</button></form>`;}
+else {content=`<form id="recordForm"><div class="form-field"><label>Title *</label><input required placeholder="Enter a title"></div><div class="form-field"><label>Description</label><textarea rows="3" placeholder="Details"></textarea></div><button class="btn btn-primary modal-submit">Save (Preview)</button></form>`;}
+$("modalTitle").textContent=heading;$("modalContent").innerHTML=content;$("modalBackdrop").hidden=false;
+const dateInput=$("modalContent").querySelector('input[type="date"]');if(dateInput)dateInput.value=new Date().toISOString().slice(0,10);
+const form=$("recordForm");if(form)form.addEventListener("submit",e=>{e.preventDefault();if(type==="admissionModal"&&!photoData){$("photoStatus").textContent="Please take or upload the required student photo.";return}toast("Form preview completed. Secure database saving is not connected yet.");closeModal()});
+if(type==="admissionModal")setupCamera();
 }
-function showPhoto(dataUrl){
-  capturedPhoto=dataUrl;
-  byId("photoImage").src=dataUrl;
-  byId("photoImage").hidden=false;
-  byId("photoPlaceholder").hidden=true;
-  byId("retakePhoto").hidden=false;
-  byId("cameraStatus").textContent="Photo selected. You can retake it or choose another photo.";
-  stopCamera();
-}
-byId("startCamera").addEventListener("click",async()=>{
-  if(!navigator.mediaDevices?.getUserMedia){
-    byId("cameraStatus").textContent="Camera access is not available in this browser. Please use the photo upload option.";
-    return;
-  }
-  try{
-    stopCamera();
-    cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:false});
-    video.srcObject=cameraStream;
-    video.hidden=false;
-    await video.play();
-    byId("capturePhoto").disabled=false;
-    byId("cameraStatus").textContent="Camera is ready. Position the student and select Capture Photo.";
-  }catch(error){
-    byId("cameraStatus").textContent="Camera permission was denied or the camera is unavailable. You can choose a photo from your device instead.";
-    stopCamera();
-  }
-});
-byId("capturePhoto").addEventListener("click",()=>{
-  if(!cameraStream||!video.videoWidth)return;
-  const maxWidth=900, scale=Math.min(1,maxWidth/video.videoWidth);
-  canvas.width=Math.round(video.videoWidth*scale);
-  canvas.height=Math.round(video.videoHeight*scale);
-  canvas.getContext("2d").drawImage(video,0,0,canvas.width,canvas.height);
-  showPhoto(canvas.toDataURL("image/jpeg",0.82));
-});
-byId("retakePhoto").addEventListener("click",()=>{
-  capturedPhoto=null;
-  byId("photoImage").hidden=true;
-  byId("photoImage").removeAttribute("src");
-  byId("photoPlaceholder").hidden=false;
-  byId("retakePhoto").hidden=true;
-  byId("photoUpload").value="";
-  byId("cameraStatus").textContent="Take a new photo or choose one from your device.";
-});
-byId("photoUpload").addEventListener("change",event=>{
-  const file=event.target.files?.[0];
-  if(!file)return;
-  if(!file.type.startsWith("image/")){byId("cameraStatus").textContent="Please choose an image file.";return;}
-  if(file.size>8*1024*1024){byId("cameraStatus").textContent="Please choose a photo smaller than 8 MB.";event.target.value="";return;}
-  const reader=new FileReader();
-  reader.onload=()=>showPhoto(reader.result);
-  reader.readAsDataURL(file);
-});
-document.addEventListener("visibilitychange",()=>{if(document.hidden)stopCamera();});
-byId("admission").addEventListener("submit",e=>{
-  e.preventDefault();
-  if(!capturedPhoto){byId("cameraStatus").textContent="Student photo is required. Please take a photo or choose one from your device.";byId("startCamera").focus();return;}
-  alert("Student photo captured successfully in this form preview. Secure admission saving and photo storage will be connected with the backend before real student records are entered.");
-});
-window.addEventListener("pagehide",stopCamera);
+function setupCamera(){const video=$("camVideo"),thumb=$("photoThumb"),placeholder=$("photoPlaceholder"),status=$("photoStatus");$("openCam").addEventListener("click",async()=>{try{stopCamera();if(!navigator.mediaDevices?.getUserMedia)throw new Error("Camera unavailable");stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:false});video.srcObject=stream;video.hidden=false;await video.play();$("takePhoto").disabled=false;status.textContent="Camera ready. Capture the photo."}catch(e){status.textContent="Camera unavailable or permission denied. Please upload a photo instead.";stopCamera()}});
+$("takePhoto").addEventListener("click",()=>{if(!stream||!video.videoWidth)return;const c=document.createElement("canvas"),scale=Math.min(1,900/video.videoWidth);c.width=Math.round(video.videoWidth*scale);c.height=Math.round(video.videoHeight*scale);c.getContext("2d").drawImage(video,0,0,c.width,c.height);setPhoto(c.toDataURL("image/jpeg",.82))});
+$("photoFile").addEventListener("change",e=>{const f=e.target.files?.[0];if(!f)return;if(!f.type.startsWith("image/")||f.size>8*1024*1024){status.textContent="Choose an image smaller than 8 MB.";e.target.value="";return}const r=new FileReader();r.onload=()=>setPhoto(r.result);r.readAsDataURL(f)});
+function setPhoto(src){photoData=src;thumb.src=src;thumb.hidden=false;placeholder.hidden=true;status.textContent="Photo selected.";stopCamera()}}
+document.addEventListener("visibilitychange",()=>{if(document.hidden)stopCamera()});window.addEventListener("pagehide",stopCamera);
